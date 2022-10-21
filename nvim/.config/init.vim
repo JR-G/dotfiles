@@ -37,6 +37,7 @@ call plug#begin()
   Plug 'airblade/vim-rooter'
   Plug 'airblade/vim-localorie'
   Plug 'alvan/vim-closetag'
+  Plug 'vim-scripts/tComment'
 call plug#end()
 
 colorscheme rigel 
