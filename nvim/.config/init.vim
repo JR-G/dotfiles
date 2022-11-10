@@ -7,12 +7,10 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   Plug 'jiangmiao/auto-pairs'
   Plug 'ap/vim-css-color'
-  Plug 'thoughtbot/vim-rspec'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'kien/ctrlp.vim'
-  Plug 'tpope/vim-rails'
-  Plug 'tpope/vim-endwise'
+  Plug 'thoughtbot/vim-rspec'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
@@ -21,6 +19,7 @@ call plug#begin()
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-bundler'
+  Plug 'tpope/vim-dispatch'
   Plug 'plasticboy/vim-markdown'
   Plug 'airblade/vim-gitgutter'
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -38,6 +37,8 @@ call plug#begin()
   Plug 'airblade/vim-localorie'
   Plug 'alvan/vim-closetag'
   Plug 'vim-scripts/tComment'
+  Plug 'sangdol/mintabline.vim'
+  Plug 'Mopik/vim-nerdtree-direnter'
 call plug#end()
 
 colorscheme rigel 
@@ -62,12 +63,13 @@ let mapleader=','
 
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
+let NERDTreeWinSize=60
+let NERDTreeMapOpenInTab='<ENTER>'
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>/ :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
-
 nnoremap <leader>u :UndotreeToggle<CR>
 
 nmap <leader>z :u<CR>
@@ -95,8 +97,7 @@ nnoremap <silent> <leader>le :echo localorie#expand_key()<CR>
 let g:rooter_patterns = ['.git', '.svn', 'package.json', '!node_modules']
 nnoremap <expr> sp ':Telescope find_files cwd='.FindRootDirectory().'/<cr>'
 
-let g:rspec_command = '!clear && echo dotenv bundle exec rspec {spec} && dotenv bundle exec rspec {spec}'
-let g:rspec_runner = "os_x_iterm"
+let g:rspec_command = "Dispatch bundle exec rspec %" 
 
 lua << EOF
   -- You dont need to set any of these options. These are the default ones. Only
@@ -120,10 +121,10 @@ EOF
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" copies relative path to clipboard by pressing yd
+:noremap <silent> yd :let @+=expand("%:p:~")<CR>
 " copies filepath to clipboard by pressing yf
 :nnoremap <silent> yf :let @+=expand('%:p')<CR>
-" copies pwd to clipboard: command yd
-:nnoremap <silent> yd :let @+=expand('%:p:h')<CR>
 
 " Vim jump to the last position when reopening a file
 if has("autocmd")
