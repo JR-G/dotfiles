@@ -65,6 +65,7 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeWinSize=60
 let NERDTreeMapOpenInTab='<ENTER>'
+let NERDTreeMapActivateNode='v'
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>/ :NERDTreeToggle<Enter>
