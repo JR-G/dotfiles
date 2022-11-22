@@ -38,7 +38,9 @@ call plug#begin()
   Plug 'alvan/vim-closetag'
   Plug 'vim-scripts/tComment'
   Plug 'sangdol/mintabline.vim'
-  Plug 'Mopik/vim-nerdtree-direnter'
+  Plug 'Nopik/vim-nerdtree-direnter'
+  Plug 'andymass/vim-matchup'
+  Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 colorscheme rigel 
@@ -95,10 +97,18 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <leader>le :echo localorie#expand_key()<CR>
 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 let g:rooter_patterns = ['.git', '.svn', 'package.json', '!node_modules']
 nnoremap <expr> sp ':Telescope find_files cwd='.FindRootDirectory().'/<cr>'
 
 let g:rspec_command = "Dispatch bundle exec rspec %" 
+
+nnoremap <cr> :noh<return>
 
 lua << EOF
   -- You dont need to set any of these options. These are the default ones. Only
@@ -109,7 +119,7 @@ lua << EOF
         fuzzy = true,                    -- false will only do exact matching
         override_generic_sorter = true,  -- override the generic sorter
         override_file_sorter = true,     -- override the file sorter
-        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+        case_mode = "ignore_case",        -- or "ignore_case" or "respect_case"
                                          -- the default case_mode is "smart_case"
       }
     }
