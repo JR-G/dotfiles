@@ -1,8 +1,0 @@
-# Ignore .DS_Store file
-.DS_Store
-
-# Ignore files in the /tmux/ directory
-/tmux/24-bit-color.sh
-/tmux/plugins/tmux-continuum/
-/tmux/plugins/tmux-sessionist/
-/tmux/terminfo.src

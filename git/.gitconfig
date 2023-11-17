@@ -5,6 +5,7 @@
 	be = bundle exec
 	upstream = !git push -u origin HEAD
 	alias = config --get-regexp ^alias\\.
+	ci = commit
 [help]
 	autocorrect = 20
 [user]
