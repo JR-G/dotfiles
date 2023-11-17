@@ -27,7 +27,8 @@ call plug#begin()
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'mhinz/vim-startify'
-  Plug 'nvim-telescope/telescope.nvim', { 'branch': '1.1.x' }
+  Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+  Plug 'nvim-telescope/telescope-file-browser.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'Rigellute/rigel'
   Plug 'mbbill/undotree'
@@ -57,6 +58,8 @@ set mouse=a
 set tabstop=2
 set shiftwidth=2
 set clipboard+=unnamedplus
+
+set guicursor=a:blinkon100
 
 lua << EOF
  require("focus").setup()
@@ -98,6 +101,12 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <leader>le :echo localorie#expand_key()<CR>
 
+nnoremap <leader>br <cmd>Telescope file_browser<CR>
+nnoremap <leader>br <cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>
+
+nnoremap <leader>so :source $MYVIMRC<CR>
+
+
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
@@ -128,6 +137,7 @@ lua << EOF
   -- To get fzf loaded and working with telescope, you need to call
   -- load_extension, somewhere after setup function:
   require('telescope').load_extension('fzf')
+  require("telescope").load_extension("file_browser")
 EOF
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
