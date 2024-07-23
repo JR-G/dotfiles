@@ -1,0 +1,15 @@
+[alias]
+	st = status
+	br = branch
+	cm = commit -m
+	be = bundle exec
+	upstream = !git push -u origin HEAD
+	alias = config --get-regexp ^alias\\.
+	ci = commit
+[help]
+	autocorrect = 20
+[user]
+	name = James Glenn
+	email = 47917431+JR-G@users.noreply.github.com
+[core]
+	excludesfile = /Users/jamesglenn/.gitignore
