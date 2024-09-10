@@ -55,6 +55,9 @@ keymap.set("n", "<leader>q", ":bw<CR>")                    -- Close current buff
 -- LazyGit
 keymap.set("n", "<leader>gg", ":LazyGit<CR>")              -- Open LazyGit
 
+-- Lspsaga hover info
+keymap.set('n', '<leader>dd', '<cmd>Lspsaga hover_doc<CR>') -- Show definition
+
 -- Rspec runners
 keymap.set("n", "<Leader>t", ":call RunCurrentSpecFile()<CR>")  -- Run current spec file
 keymap.set("n", "<Leader>s", ":call RunNearestSpec()<CR>")      -- Run nearest spec
@@ -81,4 +84,9 @@ keymap.set("n", "<CR>", ":noh<CR><CR>")                    -- Clear search highl
 -- Rooter (assuming you're still using this plugin)
 keymap.set("n", "sp", ":Telescope find_files cwd=".."<CR>") -- Find files in project root
 
--- Add any other keymaps you want to keep
+-- Formatting
+keymap.set("n", "<leader>f", "gggqG", { noremap = true, silent = true })  -- Format entire file
+
+-- Copilot
+vim.g.copilot_no_tab_map = true
+keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', { expr = true,  replace_keycodes = false }) -- Accept copilot suggestion

@@ -27,8 +27,23 @@ require("lazy").setup({
   spec = {
     -- Import your plugins
     { import = "plugins" },
+
+    -- colourscheme
+    {
+  'uloco/bluloco.nvim',
+  lazy = false,
+  priority = 1000,
+  dependencies = { 'rktjmp/lush.nvim' },
+  config = function()
+    require("bluloco").setup({
+      style = "dark",               -- "auto" | "dark" | "light"
+      transparent = true,
+      italics = false,
+      guicursor   = true,
+    })
+  end,
+},
   },
-  install = { colorscheme = { "rigel" } },
+  install = { colorscheme = { "cyberdream" } },
   checker = { enabled = true },
 })
-

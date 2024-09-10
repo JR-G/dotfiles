@@ -12,7 +12,7 @@ opt.expandtab = true
 opt.autoindent = true
 
 -- Line wrapping
-opt.wrap = false
+opt.wrap = true
 
 -- Search settings
 opt.ignorecase = true
@@ -23,7 +23,7 @@ opt.cursorline = true
 
 -- Appearance
 opt.termguicolors = true
-opt.background = "dark"
+-- opt.background = "dark"
 opt.signcolumn = "yes"
 
 -- Backspace
@@ -39,4 +39,4 @@ opt.splitbelow = true
 opt.iskeyword:append("-")
 
 -- Set colorscheme
-vim.cmd('colorscheme rigel')
+-- vim.cmd('colorscheme rigel')

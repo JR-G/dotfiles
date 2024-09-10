@@ -24,7 +24,7 @@ return {
 
     mason.setup()
     mason_lspconfig.setup({
-      ensure_installed = { 'tsserver', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls' },
+      ensure_installed = { 'tsserver', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte' },
       automatic_installation = true,
     })
 
@@ -55,13 +55,45 @@ return {
       capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
     end
 
-    local servers = { 'tsserver', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls' }
+    local servers = { 'tsserver', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte' }
     for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      if lsp == 'svelte' then
+        lspconfig[lsp].setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = {
+            svelte = {
+              plugin = {
+                svelte = {
+                  diagnostics = {
+                    enable = true,
+                  },
+                },
+              },
+            },
+          },
+        }
+      else
+        lspconfig[lsp].setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+        }
+      end
     end
+
+     -- Configure diagnostic signs
+    vim.fn.sign_define("DiagnosticSignError", {text = "󰅚", texthl = "DiagnosticSignError"})
+    vim.fn.sign_define("DiagnosticSignWarn", {text = "󰀦", texthl = "DiagnosticSignWarn"})
+    vim.fn.sign_define("DiagnosticSignInfo", {text = "󰋽", texthl = "DiagnosticSignInfo"})
+    vim.fn.sign_define("DiagnosticSignHint", {text = "󰌶", texthl = "DiagnosticSignHint"})
+
+    vim.diagnostic.config({
+      virtual_text = true,
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = false,
+    })
   end
 }
 

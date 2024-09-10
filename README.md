@@ -1,4 +1,4 @@
-# Dotfiles for James
+# Dot
 
 Dotfiles managed with GNU Stow.
 

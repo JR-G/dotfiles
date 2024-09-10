@@ -10,6 +10,11 @@ return {
     end
 
     nvim_tree.setup({
+      actions = {
+        open_file = {
+          quit_on_open = true,
+        },
+      },
       sort_by = "case_sensitive",
       view = {
         adaptive_size = true,
@@ -19,7 +24,7 @@ return {
         group_empty = true,
       },
       filters = {
-        dotfiles = true,
+        dotfiles = false,
       },
       -- Define the on_attach function to set keymaps
       on_attach = function(bufnr)
