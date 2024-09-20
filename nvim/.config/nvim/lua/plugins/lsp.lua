@@ -24,7 +24,7 @@ return {
 
     mason.setup()
     mason_lspconfig.setup({
-      ensure_installed = { 'tsserver', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte' },
+      ensure_installed = { 'ts_ls', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte' },
       automatic_installation = true,
     })
 
@@ -55,7 +55,7 @@ return {
       capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
     end
 
-    local servers = { 'tsserver', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte' }
+    local servers = { 'ts_ls', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte' }
     for _, lsp in ipairs(servers) do
       if lsp == 'svelte' then
         lspconfig[lsp].setup {

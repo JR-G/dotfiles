@@ -76,7 +76,7 @@ keymap.set("n", "<leader>le", ":echo localorie#expand_key()<CR>") -- Localorie e
 
 -- File path copy
 keymap.set("n", "yd", ":let @+=expand('%:p:~')<CR>")       -- Copy relative path to clipboard
-keymap.set("n", "yf", ":let @+=expand('%:p')<CR>")         -- Copy full path to clipboard
+keymap.set("n", "yp", ":let @+=expand('%:p')<CR>")         -- Copy full path to clipboard
 
 -- Clear search highlighting
 keymap.set("n", "<CR>", ":noh<CR><CR>")                    -- Clear search highlight on Enter
