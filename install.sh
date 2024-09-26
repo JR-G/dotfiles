@@ -23,7 +23,7 @@ echo "Installing packages from Brewfile..."
 brew bundle
 
 # Array of directories to stow
-dirs=(nvim alacritty tmux git zsh karabiner starship)
+dirs=(nvim alacritty tmux git zsh karabiner starship obsidian)
 
 # Loop through directories and stow them
 for dir in "${dirs[@]}"
