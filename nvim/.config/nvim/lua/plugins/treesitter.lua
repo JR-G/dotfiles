@@ -10,7 +10,7 @@ return {
     end
 
     configs.setup {
-      ensure_installed = { "lua", "vim", "query", "javascript", "typescript", "css", "html", "markdown" },
+      ensure_installed = { "lua", "vim", "query", "javascript", "typescript", "css", "html", "markdown", "elixir", "heex" },
       highlight = {
         enable = true,
       },
