@@ -12,6 +12,6 @@
 	name = James Glenn
 	email = 47917431+JR-G@users.noreply.github.com
 [core]
-  excludesfile = /Users/jglenn/dotfiles/git/.gitignore
+  excludesfile = /Users/james.glenn/dotfiles/git/.gitignore
 [init]
 	defaultBranch = main
