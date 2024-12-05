@@ -126,8 +126,8 @@ alias nfz='nvim $(fzf)'
 eval "$(jump shell zsh)"
 eval "$(starship init zsh)"
 
-# export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.asdf/shims:/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+# export PATH="$HOME/.asdf/shims:/usr/local/sbin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -142,3 +142,8 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(direnv hook zsh)"
+
+# Created by `pipx` on 2024-10-21 09:10:04
+export PATH="$PATH:/Users/james.glenn/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
+. "/Users/james.glenn/.deno/env"
