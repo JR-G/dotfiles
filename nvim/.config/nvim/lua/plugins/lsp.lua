@@ -56,6 +56,14 @@ return {
       vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
       vim.keymap.set("n", "<leader>so", require("telescope.builtin").lsp_document_symbols, opts)
+
+      vim.keymap.set({ "n", "v" }, "=", function()
+        require("conform").format({
+          bufnr = bufnr,
+          async = true,
+          lsp_fallback = true,
+        })
+      end, { desc = "Format buffer" })
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -116,7 +116,7 @@ return {
           typescript = { "prettier", "eslint_d" },
           javascriptreact = { "prettier", "eslint_d" },
           typescriptreact = { "prettier", "eslint_d" },
-          elixir = { "mix_format" },
+          elixir = { "mix" },
         },
       })
     end,
