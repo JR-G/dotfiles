@@ -1,0 +1,32 @@
+[colors.primary]
+foreground = "#DEb892"  # Foreground Color
+background = "#091420"  # Background Color
+bright_foreground = "#FFDFE4"  # Selected Text Color
+
+[colors.cursor]
+text = "#091420"  # Cursor Text Color
+cursor = "#FC9F2E"  # Cursor Color
+
+[colors.normal]
+black = "#174C4B"    # Ansi 0
+red = "#D15051"      # Ansi 1
+green = "#027C9B"    # Ansi 2
+yellow = "#FCA02F"   # Ansi 3
+blue = "#1E4950"     # Ansi 4
+magenta = "#68D4F1"  # Ansi 5
+cyan = "#50A3B5"     # Ansi 6
+white = "#DEB892"    # Ansi 7
+
+[colors.bright]
+black = "#434B42"    # Ansi 8
+red = "#D48686"      # Ansi 9
+green = "#618E98"    # Ansi 10
+yellow = "#FDD39F"   # Ansi 11
+blue = "#1BBCDD"     # Ansi 12
+magenta = "#BBE4EE"  # Ansi 13
+cyan = "#87ACB3"     # Ansi 14
+white = "#FFE4CD"    # Ansi 15
+
+[colors.selection]
+text = "#FFDFE4"     # Selected Text Color
+background = "#1E4950"  # Selection Color
