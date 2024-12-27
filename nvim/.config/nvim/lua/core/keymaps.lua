@@ -90,3 +90,20 @@ keymap.set("n", "<leader>f", "gggqG", { noremap = true, silent = true })  -- For
 -- Copilot
 vim.g.copilot_no_tab_map = true
 keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', { expr = true,  replace_keycodes = false }) -- Accept copilot suggestion
+
+-- Vimspector
+keymap.set("n", "<leader>bb", ":call vimspector#Launch()<CR>")
+keymap.set("n", "<leader>be", ":call vimspector#Reset()<CR>")
+keymap.set("n", "<leader>bc", ":call vimspector#Continue()<CR>")
+
+keymap.set("n", "<leader>bt", ":call vimspector#ToggleBreakpoint()<CR>")
+keymap.set("n", "<leader>bT", ":call vimspector#ClearBreakpoints()<CR>")
+
+keymap.set("n", "<leader>dk", "<Plug>VimspectorRestart")
+keymap.set("n", "<leader>dh", "<Plug>VimspectorStepOut")
+keymap.set("n", "<leader>dl", "<Plug>VimspectorStepInto")
+keymap.set("n", "<leader>dj", "<Plug>VimspectorStepOver")
+
+
+-- Noice keymapping
+keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>") -- Dismiss noice messages

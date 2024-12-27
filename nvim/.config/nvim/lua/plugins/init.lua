@@ -7,6 +7,7 @@ return {
   { 'neanias/everforest-nvim'},
   {'scottmckendry/cyberdream.nvim'},
   { 'zenbones-theme/zenbones.nvim'},
+  { 'navarasu/onedark.nvim'},
   {
     'uloco/bluloco.nvim',
     dependencies = { 'rktjmp/lush.nvim'}
@@ -77,14 +78,6 @@ return {
     end
   },
 
-  -- Elixir support
-  {
-    'elixir-tools/elixir-tools.nvim',
-    config = function()
-      require("elixir").setup()
-    end
-  },
-
   -- Ruby specific
   { 'tpope/vim-rails' },
   { 'tpope/vim-bundler' },
@@ -116,10 +109,11 @@ return {
     config = function()
       require("conform").setup({
         formatters_by_ft = {
-          javascript = { "eslint_d" },
-          typescript = { "eslint_d" },
-          javascriptreact = { "eslint_d" },
-          typescriptreact = { "eslint_d" },
+          javascript = { "prettier", "eslint_d" },
+          typescript = { "prettier", "eslint_d" },
+          javascriptreact = { "prettier", "eslint_d" },
+          typescriptreact = { "prettier", "eslint_d" },
+          elixir = { "mix_format" },
         },
       })
     end,
@@ -148,9 +142,32 @@ return {
   },
 
   -- Copilot
-  { 'github/copilot.vim' },
+  -- { 'github/copilot.vim' },
 
   -- Svelte
   { 'evanleck/vim-svelte' },
-  { 'leafOfTree/vim-svelte-plugin' }
+  { 'leafOfTree/vim-svelte-plugin' },
+
+  -- Argument highlighting
+  {
+    'm-demare/hlargs.nvim',
+    config = function()
+      require('hlargs').setup()
+    end
+  },
+
+  -- Debugging
+  { 'puremourning/vimspector' },
+  { 'mfussenegger/nvim-dap' },
+
+  -- Noice for UI stuff
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  }
 }
