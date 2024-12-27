@@ -1,16 +1,19 @@
 -- lua/plugins/init.lua
 return {
   -- Color schemes
-  { "Rigellute/rigel" },
-  { 'relastle/bluewery.vim' },
-  { 'rebelot/kanagawa.nvim'},
-  { 'neanias/everforest-nvim'},
-  {'scottmckendry/cyberdream.nvim'},
-  { 'zenbones-theme/zenbones.nvim'},
-  { 'navarasu/onedark.nvim'},
   {
     'uloco/bluloco.nvim',
     dependencies = { 'rktjmp/lush.nvim'}
+  },
+  {
+    "sainnhe/sonokai",
+    priority = 1000,
+    config = function()
+      vim.g.sonokai_transparent_background = "1"
+      vim.g.sonokai_enable_italic = "1"
+      vim.g.sonokai_style = "andromeda"
+      vim.cmd.colorscheme("sonokai")
+    end,
   },
 
   -- Git integration
@@ -163,11 +166,67 @@ return {
   -- Noice for UI stuff
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {},
+    opts = function()
+        -- Initialize opts with a default empty table
+        local opts = {
+            routes = {},  -- Initialize routes as empty array
+            commands = {
+                all = {
+                    view = "split",
+                    opts = { enter = true, format = "details" },
+                    filter = {},
+                },
+            },
+            presets = {
+                lsp_doc_border = true,
+            },
+        }
+
+        -- Now you can safely insert into opts.routes
+        table.insert(opts.routes, {
+            filter = {
+                event = "notify",
+                find = "No information available",
+            },
+            opts = { skip = true },
+        })
+
+        local focused = true
+        vim.api.nvim_create_autocmd("FocusGained", {
+            callback = function()
+                focused = true
+            end,
+        })
+        vim.api.nvim_create_autocmd("FocusLost", {
+            callback = function()
+                focused = false
+            end,
+        })
+
+        table.insert(opts.routes, 1, {
+            filter = {
+                cond = function()
+                    return not focused
+                end,
+            },
+            view = "notify_send",
+            opts = { stop = false },
+        })
+
+        return opts  -- Return the configured opts table
+    end,
     dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    }
-  }
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
+    },
+},
+
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			timeout = 5000,
+			background_colour = "#000000",
+			render = "wrapped-compact",
+		},
+	},
 }
