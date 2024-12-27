@@ -112,6 +112,17 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+starship-switch() {
+  if [ -z "$1" ]; then
+    echo "Usage: starship-switch <theme>"
+    return 1
+  fi
+
+  cd ~/dotfiles/starship/.config
+  cp "starship/presets/$1.toml" starship.toml
+  cd - > /dev/null
+}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
