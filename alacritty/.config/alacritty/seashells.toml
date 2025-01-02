@@ -1,7 +1,10 @@
 [colors.primary]
-foreground = "#DEb892"  # Foreground Color
-background = "#091420"  # Background Color
-bright_foreground = "#FFDFE4"  # Selected Text Color
+# foreground = "#DEb892"  # Foreground Color
+# background = "#091420"  # Background Color
+# bright_foreground = "#FFDFE4"  # Selected Text Color
+background = '#00141a'  # Copy from File A
+foreground = "#DEb892"  # Keep File B's foreground
+bright_foreground = "#FFDFE4"  # Keep File B's bright_foreground
 
 [colors.cursor]
 text = "#091420"  # Cursor Text Color
