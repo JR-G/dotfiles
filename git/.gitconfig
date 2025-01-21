@@ -5,11 +5,12 @@
 	be = bundle exec
 	upstream = !git push -u origin HEAD
 	alias = config --get-regexp ^alias\\.
-	cm = commit -m
 	amendit = commit --amend --no-edit
 	fwl = push --force-with-lease
 	go = !git amendit && git fwl
   sync = !git fetch origin && git reset --hard @{u}
+  m = checkout main
+  prev = checkout -
 [help]
 	autocorrect = 20
 [user]
