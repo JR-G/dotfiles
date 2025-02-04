@@ -57,7 +57,7 @@ mods = "Alt"
 
 [window]
 decorations = "Buttonless"
-opacity = 0.90
+opacity = 0.95
 startup_mode = "Maximized"
 dynamic_title = false
 title = "🥳 🥳 🥳"

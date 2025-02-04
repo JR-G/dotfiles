@@ -1,6 +1,5 @@
 format = """
 [╭](fg:current_line)\
-$os\
 $directory\
 $git_branch\
 $git_status\
@@ -10,9 +9,6 @@ $dotnet\
 $python\
 $java\
 $c\
-$cmd_duration\
-$shell\
-$time\
 $line_break\
 $character\
 """

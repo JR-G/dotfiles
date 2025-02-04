@@ -16,8 +16,15 @@ require('core.keymaps')
 require('core.autocmds')
 
 -- Set colorscheme safely
-local status_ok, _ = pcall(vim.cmd, "colorscheme bluloco")
+-- local status_ok, _ = pcall(vim.cmd, "colorscheme bluloco")
+-- if not status_ok then
+--   vim.notify("colorscheme bluloco not found!")
+--   return
+-- end
+-- Set colorscheme safely
+local status_ok, _ = pcall(vim.cmd, "colorscheme rose-pine")
 if not status_ok then
-  vim.notify("colorscheme bluloco not found!")
+  vim.notify("colorscheme rose-pine not found!")
   return
 end
+
