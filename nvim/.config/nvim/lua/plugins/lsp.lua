@@ -33,7 +33,7 @@ return {
 
     mason.setup()
     mason_lspconfig.setup({
-      ensure_installed = { 'ts_ls', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls' },
+      ensure_installed = { 'ts_ls', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer' },
       automatic_installation = true,
     })
 
@@ -72,7 +72,7 @@ return {
       capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
     end
 
-    local servers = { 'ts_ls', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls' }
+    local servers = { 'ts_ls', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer' }
     for _, lsp in ipairs(servers) do
       if lsp == 'svelte' then
         lspconfig[lsp].setup {
@@ -89,6 +89,18 @@ return {
               },
             },
           },
+        }
+      elseif lsp == 'rust_analyzer' then
+        lspconfig[lsp].setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = {
+                command = "clippy"
+              }
+            }
+          }
         }
       else
         lspconfig[lsp].setup {
