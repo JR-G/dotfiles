@@ -3,6 +3,7 @@
 	br = branch
 	cm = commit -m
 	be = bundle exec
+  c = checkout
 	upstream = !git push -u origin HEAD
 	alias = config --get-regexp ^alias\\.
 	amendit = commit --amend --no-edit
