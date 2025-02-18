@@ -154,6 +154,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(direnv hook zsh)"
 
+export GHOSTTY_CONFIG_PATH="$HOME/.config/ghostty/config"
 # Created by `pipx` on 2024-10-21 09:10:04
 export PATH="$PATH:/Users/james.glenn/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
