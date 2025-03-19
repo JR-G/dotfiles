@@ -6,3 +6,5 @@ obsidian/*
 obsidian/.obsidian/workspace.json
 obsidian/Atomic
 obsidian/Ephemeral
+.vscode/
+.cursorrules
