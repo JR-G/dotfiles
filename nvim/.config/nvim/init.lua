@@ -1,5 +1,8 @@
 -- config/nvim/init.lua
 
+-- Python path for neovim
+vim.g.python3_host_prog = vim.fn.expand("~/.config/nvim/venv/bin/python")
+
 -- Set leader key
 vim.g.mapleader = ","
 
