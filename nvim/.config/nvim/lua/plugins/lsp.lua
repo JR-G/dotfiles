@@ -33,7 +33,7 @@ return {
 
     mason.setup()
     mason_lspconfig.setup({
-      ensure_installed = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer' },
+      ensure_installed = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer', 'ruby_lsp' },
       automatic_installation = true,
     })
 
@@ -78,7 +78,7 @@ return {
       cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
     }
 
-    local servers = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'rust_analyzer' }
+    local servers = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'rust_analyzer', 'ruby_lsp' }
     for _, lsp in ipairs(servers) do
       if lsp == 'svelte' then
         lspconfig[lsp].setup {

@@ -104,6 +104,7 @@ return {
   { 'tpope/vim-endwise' },
   { 'tpope/vim-eunuch' },
   { 'tpope/vim-fugitive' },
+  { 'tpope/vim-projectionist'},
 
   -- Modern surround plugin
   { 'kylechui/nvim-surround', config = true },
