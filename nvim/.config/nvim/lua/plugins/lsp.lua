@@ -16,27 +16,14 @@ return {
     "j-hui/fidget.nvim",
   },
   config = function()
-    local lspconfig_status_ok, lspconfig = pcall(require, 'lspconfig')
-    if not lspconfig_status_ok then
-      return
+    -- Configure capabilities
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+    if cmp_nvim_lsp_status_ok then
+      capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
     end
 
-    local mason_status_ok, mason = pcall(require, 'mason')
-    if not mason_status_ok then
-      return
-    end
-
-    local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
-    if not mason_lspconfig_status_ok then
-      return
-    end
-
-    mason.setup()
-    mason_lspconfig.setup({
-      ensure_installed = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer', 'ruby_lsp' },
-      automatic_installation = true,
-    })
-
+    -- Define on_attach function
     local on_attach = function(client, bufnr)
       vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
       vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
@@ -66,65 +53,72 @@ return {
       end, { desc = "Format buffer" })
     end
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-    if cmp_nvim_lsp_status_ok then
-      capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-    end
-
-    lspconfig.elixirls.setup {
-      on_attach = on_attach,
+    -- Configure base options for all servers
+    local base_config = {
       capabilities = capabilities,
-      cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
+      on_attach = on_attach,
     }
 
-    local servers = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'rust_analyzer', 'ruby_lsp' }
-    for _, lsp in ipairs(servers) do
-      if lsp == 'svelte' then
-        lspconfig[lsp].setup {
-          on_attach = on_attach,
-          capabilities = capabilities,
-          settings = {
+    -- Configure servers with vim.lsp.config (new API)
+    -- Normal servers (no special config)
+    for _, server in ipairs({ 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'ruby_lsp' }) do
+      vim.lsp.config(server, base_config)
+    end
+
+    -- Svelte server with custom settings
+    vim.lsp.config('svelte', vim.tbl_extend('force', base_config, {
+      settings = {
+        svelte = {
+          plugin = {
             svelte = {
-              plugin = {
-                svelte = {
-                  diagnostics = {
-                    enable = true,
-                  },
-                },
+              diagnostics = {
+                enable = true,
               },
             },
           },
-        }
-      elseif lsp == 'rust_analyzer' then
-        lspconfig[lsp].setup {
-          on_attach = on_attach,
-          capabilities = capabilities,
-          settings = {
-            ['rust-analyzer'] = {
-              checkOnSave = {
-                command = "clippy"
-              }
-            }
+        },
+      },
+    }))
+
+    -- Rust analyzer with custom settings
+    vim.lsp.config('rust_analyzer', vim.tbl_extend('force', base_config, {
+      settings = {
+        ['rust-analyzer'] = {
+          checkOnSave = {
+            command = "clippy"
           }
         }
-      else
-        lspconfig[lsp].setup {
-          on_attach = on_attach,
-          capabilities = capabilities,
-        }
-      end
-    end
+      }
+    }))
+
+    -- Elixir LS with custom cmd
+    vim.lsp.config('elixirls', vim.tbl_extend('force', base_config, {
+      cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
+    }))
+
+    -- Setup mason and mason-lspconfig
+    require('mason').setup()
+    require('mason-lspconfig').setup({
+      ensure_installed = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer', 'ruby_lsp' },
+    })
 
     -- Configure diagnostic signs
-    vim.fn.sign_define("DiagnosticSignError", {text = "󰅚", texthl = "DiagnosticSignError"})
-    vim.fn.sign_define("DiagnosticSignWarn", {text = "󰀦", texthl = "DiagnosticSignWarn"})
-    vim.fn.sign_define("DiagnosticSignInfo", {text = "󰋽", texthl = "DiagnosticSignInfo"})
-    vim.fn.sign_define("DiagnosticSignHint", {text = "󰌶", texthl = "DiagnosticSignHint"})
-
     vim.diagnostic.config({
       virtual_text = true,
-      signs = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "󰅚",
+          [vim.diagnostic.severity.WARN] = "󰀦",
+          [vim.diagnostic.severity.INFO] = "󰋽",
+          [vim.diagnostic.severity.HINT] = "󰌶",
+        },
+        texthl = {
+          [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+          [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+          [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+          [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+        }
+      },
       underline = true,
       update_in_insert = false,
       severity_sort = false,
