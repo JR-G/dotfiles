@@ -1,0 +1,111 @@
+{
+  "editor.lineNumbers": "relative",
+  "workbench.colorTheme": "Bluloco Dark Italic",
+  "explorer.confirmDragAndDrop": false,
+  "editor.stickyScroll.enabled": false,
+  "svelte.enable-ts-plugin": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "workbench.editor.showIcons": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.hidesExplorerArrows": true,
+  "workbench.tips.enabled": false,
+  "workbench.tree.renderIndentGuides": "none",
+  "breadcrumbs.enabled": false,
+  "window.title": " ",
+  "editor.fontFamily": "Cartograph CF",
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "Cartograph CF",
+  "scm.inputFontFamily": "Cartograph CF",
+  "editor.codeLensFontFamily": "Cartograph CF",
+  "editor.inlayHints.fontFamily": "Cartograph CF",
+  "editor.inlineSuggest.fontFamily": "Cartograph CF",
+  "debug.console.fontFamily": "Cartograph CF",
+  "notebook.output.fontFamily": "Cartograph CF",
+  "chat.editor.fontFamily": "Cartograph CF",
+  "animations.Install-Method": "Apc Customize UI++",
+  "vim.cursorStylePerMode.insert": "line",
+  "apc.imports": [
+    "file://${userHome}/.cursor/extensions/brandonkirbyson.vscode-animations-2.0.4/dist/updateHandler.js"
+  ],
+  "workbench.fontAliasing": "antialiased",
+  "editor.guides.indentation": false,
+  "workbench.editor.splitInGroupLayout": "vertical",
+  "editor.cursorStyle": "block",
+  "editor.formatOnSave": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "custom-ui-style.electron": {
+    "frame": true,
+    "tranparent": true,
+    "opacity": 0.94
+  },
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": false,
+  "vim.useSystemClipboard": true,
+  "apc.electron": {
+    "frame": false,
+    "titleBarStyle": "hiddenInset",
+    "trafficLightPosition": {
+      "x": 7,
+      "y": 5
+    }
+  },
+  "custom-ui-style.stylesheet": {
+    ".titlebar": "display: none !important",
+    ".title-actions": "display: none !important",
+    ".window-title": "display: none !important",
+    ".quick-input-widget.show-file-icons, .editor-widget.find-widget": "box-shadow: none !important",
+    ".filematch .monaco-icon-label:before, .custom-list-row.results .monaco-list-row .monaco-icon-label:before": "background-position: 0 bottom !important",
+    ".filematch .monaco-count-badge": "padding: 5px 6px 0 6px !important",
+    ".sidebar .title-label": "padding: 0 !important",
+    ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "outline: none !important",
+    ".sidebar": "border: none !important",
+    ".monaco-editor .cursors-layer .cursor": "background-image: linear-gradient(135deg, #67D0FF 10%, #C45DFF 100%)",
+    ".quick-input-list-row div": "display: flex !important; align-items: center !important",
+    ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "padding-bottom: 6px !important",
+    ".sidebar .title-label h2": "line-height: 2.8 !important",
+    ".monaco-editor .scroll-decoration": "display: none !important",
+    ".monaco-scrollable-element > .shadow.top": "display: none !important",
+    "body:has(div[role=application]) .quick-input-widget": {
+      "top": "50% !important",
+      "left": "50% !important",
+      "transform": "translate(-50%, -50%) !important",
+      "position": "fixed !important",
+      "margin": "0 !important",
+      "right": "auto !important",
+      "width": "600px !important"
+    },
+    ".editor-actions": "display: none !important",
+    ".part.sidebar": "box-shadow: 0px 0px 50px rgba(0, 0, 0, .25)",
+    ".monaco-tree .monaco-tree-row .label-name": "font-family: Cartograph CF !important; font-size: 12px !important",
+    ".monaco-list .monaco-list-row": "font-family: Cartograph CF !important; font-size: 12px !important",
+    ".monaco-icon-label .label-name": "font-family: Cartograph CF !important; font-size: 12px !important",
+    ".pane-header": "display: none !important",
+    ".sidebar2-item-icon-anysphere": "display: none !important",
+    "search.searchEditor.fontFamily": "font-family: Cartograph CF !important",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "workbench.activityBar.location": "hidden",
+  "workbench.statusBar.visible": false,
+  "cursor.cpp.enablePartialAccepts": true,
+  "breadcrumbs.filePath": "off",
+  "breadcrumbs.icons": false,
+  "window.titleBarStyle": "custom",
+  "window.customTitleBarVisibility": "never",
+  "workbench.panel.defaultLocation": "right",
+  "workbench.panel.opensMaximized": "never",
+  "terminal.integrated.defaultLocation": "view",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  },
+
