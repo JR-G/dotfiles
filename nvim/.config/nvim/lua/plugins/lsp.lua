@@ -61,7 +61,7 @@ return {
 
     -- Configure servers with vim.lsp.config (new API)
     -- Normal servers (no special config)
-    for _, server in ipairs({ 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'ruby_lsp' }) do
+    for _, server in ipairs({ 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'ruby_lsp', 'basedpyright' }) do
       vim.lsp.config(server, base_config)
     end
 
@@ -99,7 +99,7 @@ return {
     -- Setup mason and mason-lspconfig
     require('mason').setup()
     require('mason-lspconfig').setup({
-      ensure_installed = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer', 'ruby_lsp' },
+      ensure_installed = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer', 'ruby_lsp', 'basedpyright' },
     })
 
     -- Configure diagnostic signs
