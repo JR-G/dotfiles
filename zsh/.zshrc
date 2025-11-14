@@ -72,8 +72,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # asdf
-. $HOME/.asdf/asdf.sh
-export PATH="$HOME/.asdf/shims:$PATH"
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+  . "$HOME/.asdf/asdf.sh"
+  export PATH="$HOME/.asdf/shims:$PATH"
+fi
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -93,7 +95,9 @@ plugins=(
   docker
 )
 
-source $ZSH/oh-my-zsh.sh
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+  source "$ZSH/oh-my-zsh.sh"
+fi
 
 # User configuration
 
@@ -149,15 +153,27 @@ export PATH="/usr/local/sbin:$PATH"
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-eval "$(direnv hook zsh)"
+if [ -f "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+if command -v brew &> /dev/null && [ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+  source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
+if command -v direnv &> /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 
 export GHOSTTY_CONFIG_PATH="$HOME/.config/ghostty/config"
 # Created by `pipx` on 2024-10-21 09:10:04
-export PATH="$PATH:/Users/james.glenn/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
-. "/Users/james.glenn/.deno/env"
-eval "$(rbenv init -)"
-export PATH="$HOME/.local/bin:$PATH"
+
+if [ -f "$HOME/.deno/env" ]; then
+  . "$HOME/.deno/env"
+fi
+
+if command -v rbenv &> /dev/null; then
+  eval "$(rbenv init -)"
+fi
