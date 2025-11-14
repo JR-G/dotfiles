@@ -46,6 +46,12 @@ else
     echo "deno is already installed."
 fi
 
+# Backup existing .zshrc if it exists and is not a symlink (created by oh-my-zsh installer)
+if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+    echo "Backing up existing .zshrc to .zshrc.backup"
+    mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
+fi
+
 # Array of directories to stow
 dirs=(nvim alacritty tmux git zsh karabiner starship obsidian ghostty)
 

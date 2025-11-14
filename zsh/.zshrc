@@ -8,6 +8,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Ensure Homebrew paths are available early
+if [ -d "/opt/homebrew/bin" ]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+elif [ -d "/usr/local/bin" ]; then
+  export PATH="/usr/local/bin:$PATH"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -95,11 +102,16 @@ plugins=(
   docker
 )
 
+ZSH_THEME=""
+
 if [ -f "$ZSH/oh-my-zsh.sh" ]; then
   source "$ZSH/oh-my-zsh.sh"
 fi
 
 # User configuration
+
+eval "$(jump shell zsh)"
+eval "$(starship init zsh)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -138,9 +150,6 @@ starship-switch() {
 
 alias nfz='nvim $(fzf)'
 
-eval "$(jump shell zsh)"
-eval "$(starship init zsh)"
-
 export PATH="/usr/local/sbin:$PATH"
 # export PATH="$HOME/.asdf/shims:/usr/local/sbin:$PATH"
 
@@ -154,12 +163,19 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-if [ -f "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+if command -v brew &> /dev/null; then
+  BREW_PREFIX=$(brew --prefix)
+  if [ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  elif [ -f "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  elif [ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  fi
 
-if command -v brew &> /dev/null && [ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-  source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  if [ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+    source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  fi
 fi
 
 if command -v direnv &> /dev/null; then
