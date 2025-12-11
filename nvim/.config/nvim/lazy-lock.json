@@ -55,6 +55,5 @@
   "vim-rails": { "branch": "master", "commit": "b0a5c76f86ea214ade36ab0b811e730c3f0add67" },
   "vim-rspec": { "branch": "main", "commit": "c0251b2e40eba5c9fb145adb8896424fa11972da" },
   "vim-svelte": { "branch": "main", "commit": "f6df955ad86583e9751487eb7550fae9e53d2d6b" },
-  "vim-svelte-plugin": { "branch": "master", "commit": "f80ff67a94e3ac279fe55ecdf55ad7342f4a5228" },
-  "vimspector": { "branch": "master", "commit": "97984cafcf5e15befa05ec134d644e5e4f1c07f3" }
+  "vim-svelte-plugin": { "branch": "master", "commit": "f80ff67a94e3ac279fe55ecdf55ad7342f4a5228" }
 }

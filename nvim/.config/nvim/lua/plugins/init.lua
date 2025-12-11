@@ -177,7 +177,7 @@ return {
   },
 
   -- Debugging
-  { 'puremourning/vimspector' },
+  -- { 'puremourning/vimspector' },
   { 'mfussenegger/nvim-dap' },
 
   -- Noice for UI stuff

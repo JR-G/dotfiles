@@ -61,7 +61,7 @@ return {
 
     -- Configure servers with vim.lsp.config (new API)
     -- Normal servers (no special config)
-    for _, server in ipairs({ 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'ruby_lsp', 'basedpyright' }) do
+    for _, server in ipairs({ 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'basedpyright' }) do
       vim.lsp.config(server, base_config)
     end
 
