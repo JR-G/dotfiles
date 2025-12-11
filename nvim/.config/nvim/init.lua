@@ -25,9 +25,9 @@ require('core.autocmds')
 --   return
 -- end
 -- Set colorscheme safely
-local status_ok, _ = pcall(vim.cmd, "colorscheme rose-pine")
-if not status_ok then
-  vim.notify("colorscheme rose-pine not found!")
-  return
-end
+-- local status_ok, _ = pcall(vim.cmd, "colorscheme rose-pine")
+-- if not status_ok then
+--   vim.notify("colorscheme rose-pine not found!")
+--   return
+-- end
 
