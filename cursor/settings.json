@@ -1,111 +1,185 @@
 {
-  "editor.lineNumbers": "relative",
-  "workbench.colorTheme": "Bluloco Dark Italic",
-  "explorer.confirmDragAndDrop": false,
-  "editor.stickyScroll.enabled": false,
-  "svelte.enable-ts-plugin": true,
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
-  "workbench.editor.showIcons": false,
+  "workbench.colorTheme": "Rosé Pine Moon (no italics)",
+  "editor.minimap.enabled": false,
   "workbench.iconTheme": "material-icon-theme",
-  "material-icon-theme.hidesExplorerArrows": true,
-  "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none",
-  "breadcrumbs.enabled": false,
-  "window.title": " ",
-  "editor.fontFamily": "Cartograph CF",
-  "editor.fontLigatures": true,
-  "terminal.integrated.fontFamily": "Cartograph CF",
-  "scm.inputFontFamily": "Cartograph CF",
-  "editor.codeLensFontFamily": "Cartograph CF",
-  "editor.inlayHints.fontFamily": "Cartograph CF",
-  "editor.inlineSuggest.fontFamily": "Cartograph CF",
-  "debug.console.fontFamily": "Cartograph CF",
-  "notebook.output.fontFamily": "Cartograph CF",
-  "chat.editor.fontFamily": "Cartograph CF",
-  "animations.Install-Method": "Apc Customize UI++",
-  "vim.cursorStylePerMode.insert": "line",
-  "apc.imports": [
-    "file://${userHome}/.cursor/extensions/brandonkirbyson.vscode-animations-2.0.4/dist/updateHandler.js"
-  ],
-  "workbench.fontAliasing": "antialiased",
-  "editor.guides.indentation": false,
-  "workbench.editor.splitInGroupLayout": "vertical",
-  "editor.cursorStyle": "block",
-  "editor.formatOnSave": true,
-  "terminal.integrated.enableMultiLinePasteWarning": false,
-  "custom-ui-style.electron": {
-    "frame": true,
-    "tranparent": true,
-    "opacity": 0.94
-  },
-  "explorer.confirmDelete": false,
-  "explorer.compactFolders": false,
-  "vim.useSystemClipboard": true,
-  "apc.electron": {
-    "frame": false,
-    "titleBarStyle": "hiddenInset",
-    "trafficLightPosition": {
-      "x": 7,
-      "y": 5
-    }
-  },
-  "custom-ui-style.stylesheet": {
-    ".titlebar": "display: none !important",
-    ".title-actions": "display: none !important",
-    ".window-title": "display: none !important",
-    ".quick-input-widget.show-file-icons, .editor-widget.find-widget": "box-shadow: none !important",
-    ".filematch .monaco-icon-label:before, .custom-list-row.results .monaco-list-row .monaco-icon-label:before": "background-position: 0 bottom !important",
-    ".filematch .monaco-count-badge": "padding: 5px 6px 0 6px !important",
-    ".sidebar .title-label": "padding: 0 !important",
-    ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "outline: none !important",
-    ".sidebar": "border: none !important",
-    ".monaco-editor .cursors-layer .cursor": "background-image: linear-gradient(135deg, #67D0FF 10%, #C45DFF 100%)",
-    ".quick-input-list-row div": "display: flex !important; align-items: center !important",
-    ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "padding-bottom: 6px !important",
-    ".sidebar .title-label h2": "line-height: 2.8 !important",
-    ".monaco-editor .scroll-decoration": "display: none !important",
-    ".monaco-scrollable-element > .shadow.top": "display: none !important",
-    "body:has(div[role=application]) .quick-input-widget": {
-      "top": "50% !important",
-      "left": "50% !important",
-      "transform": "translate(-50%, -50%) !important",
-      "position": "fixed !important",
-      "margin": "0 !important",
-      "right": "auto !important",
-      "width": "600px !important"
-    },
-    ".editor-actions": "display: none !important",
-    ".part.sidebar": "box-shadow: 0px 0px 50px rgba(0, 0, 0, .25)",
-    ".monaco-tree .monaco-tree-row .label-name": "font-family: Cartograph CF !important; font-size: 12px !important",
-    ".monaco-list .monaco-list-row": "font-family: Cartograph CF !important; font-size: 12px !important",
-    ".monaco-icon-label .label-name": "font-family: Cartograph CF !important; font-size: 12px !important",
-    ".pane-header": "display: none !important",
-    ".sidebar2-item-icon-anysphere": "display: none !important",
-    "search.searchEditor.fontFamily": "font-family: Cartograph CF !important",
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
+  "editor.lineNumbers": "relative",
+  "workbench.activityBar.location": "hidden",
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
-  "workbench.activityBar.location": "hidden",
+  "window.title": "${rootName}",
+  "workbench.editor.showIcons": false,
+  "explorer.compactFolders": false,
   "workbench.statusBar.visible": false,
-  "cursor.cpp.enablePartialAccepts": true,
-  "breadcrumbs.filePath": "off",
   "breadcrumbs.icons": false,
-  "window.titleBarStyle": "custom",
-  "window.customTitleBarVisibility": "never",
+  "vim.useSystemClipboard": true,
   "workbench.panel.defaultLocation": "right",
-  "workbench.panel.opensMaximized": "never",
-  "terminal.integrated.defaultLocation": "view",
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.formatOnSave": true,
+  "terminal.integrated.cursorStyle": "block",
+  "[yaml]": {
+    "editor.formatOnSave": false
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true
+  "[markdown]": {
+      "editor.formatOnSave": false,
+      "editor.defaultFormatter": null
+    },
+    "custom-ui-style.electron": {
+      "frame": true,
+      "tranparent": true,
+      "opacity": 0.95
+    },
+
+  "workbench.colorCustomizations": {
+    "[Rosé Pine Moon (no italics)]": {
+      "editor.background": "#232136",
+      "editor.foreground": "#e0def4",
+      "editorLineNumber.foreground": "#6e6a86",
+      "editorLineNumber.activeForeground": "#908caa",
+      "editorCursor.foreground": "#e0def4",
+      "editor.selectionBackground": "#44415a",
+      "editor.inactiveSelectionBackground": "#2a283e",
+      "editor.lineHighlightBackground": "#2a283e",
+      "editorBracketMatch.border": "#56526e",
+      "editorBracketMatch.background": "#2a283e",
+      "editorIndentGuide.background1": "#393552",
+      "editorIndentGuide.activeBackground1": "#44415a",
+
+      "sideBar.background": "#2a273f",
+      "sideBar.foreground": "#e0def4",
+      "sideBar.border": "#393552",
+      "activityBar.background": "#2a273f",
+      "activityBar.foreground": "#e0def4",
+      "activityBarBadge.background": "#3e8fb0",
+      "activityBarBadge.foreground": "#232136",
+
+      "tab.activeBackground": "#232136",
+      "tab.activeForeground": "#e0def4",
+      "tab.inactiveBackground": "#2a273f",
+      "tab.inactiveForeground": "#908caa",
+      "tab.border": "#393552",
+      "editorGroupHeader.tabsBackground": "#2a273f",
+      "editorGroup.border": "#393552",
+
+      "panel.background": "#2a273f",
+      "panel.border": "#393552",
+      "statusBar.background": "#2a273f",
+      "statusBar.foreground": "#e0def4",
+      "titleBar.activeBackground": "#2a273f",
+      "titleBar.activeForeground": "#e0def4",
+
+      "terminal.background": "#232136",
+      "terminal.foreground": "#e0def4",
+      "terminalCursor.foreground": "#e0def4",
+
+      "terminal.ansiBlack": "#393552",
+      "terminal.ansiRed": "#eb6f92",
+      "terminal.ansiGreen": "#95b1ac",
+      "terminal.ansiYellow": "#f6c177",
+      "terminal.ansiBlue": "#3e8fb0",
+      "terminal.ansiMagenta": "#c4a7e7",
+      "terminal.ansiCyan": "#9ccfd8",
+      "terminal.ansiWhite": "#e0def4",
+      "terminal.ansiBrightBlack": "#6e6a86",
+      "terminal.ansiBrightRed": "#eb6f92",
+      "terminal.ansiBrightGreen": "#95b1ac",
+      "terminal.ansiBrightYellow": "#f6c177",
+      "terminal.ansiBrightBlue": "#3e8fb0",
+      "terminal.ansiBrightMagenta": "#c4a7e7",
+      "terminal.ansiBrightCyan": "#9ccfd8",
+      "terminal.ansiBrightWhite": "#ffffff0f"
+    }
   },
 
+  "editor.semanticHighlighting.enabled": "configuredByTheme",
+
+  "editor.semanticTokenColorCustomizations": {
+    "[Rosé Pine Moon (no italics)]": {
+      "rules": {
+        "parameter": "#c4a7e7",
+
+        "variable": "#e0def4",
+        "variable.local": "#c4a7e7",
+
+        "property": "#9ccfd8",
+        "property.readonly": "#9ccfd8",
+        "member": "#9ccfd8",
+
+        "function": "#ea9a97",
+        "method": "#ea9a97",
+
+        "operator": "#6e6a86",
+        "keyword": "#3e8fb0",
+
+        "string": "#f6c177",
+        "number": "#f6c177",
+        "boolean": "#ea9a97",
+
+        "class": "#9ccfd8",
+        "interface": "#9ccfd8",
+        "type": "#9ccfd8",
+        "typeParameter": "#9ccfd8",
+        "namespace": "#9ccfd8",
+        "enum": "#f6c177",
+        "enumMember": "#f6c177",
+        "label": "#908caa"
+      }
+    }
+  },
+
+  "editor.tokenColorCustomizations": {
+    "[Rosé Pine Moon (no italics)]": {
+      "comments": "#6e6a86",
+      "keywords": "#3e8fb0",
+      "strings": "#f6c177",
+      "numbers": "#f6c177",
+      "functions": "#ea9a97",
+      "types": "#9ccfd8",
+      "variables": "#e0def4",
+      "textMateRules": [
+        {
+          "name": "Parameters (fallback if semantic off)",
+          "scope": ["variable.parameter", "meta.parameter"],
+          "settings": { "foreground": "#c4a7e7" }
+        },
+        {
+          "name": "Object literal keys & properties",
+          "scope": [
+            "meta.object-literal.key",
+            "support.type.property-name",
+            "meta.property.object",
+            "variable.other.property",
+            "variable.other.object.property"
+          ],
+          "settings": { "foreground": "#9ccfd8" }
+        },
+        {
+          "name": "Members in member expressions",
+          "scope": ["variable.other.member", "meta.property.member"],
+          "settings": { "foreground": "#9ccfd8" }
+        },
+        {
+          "name": "Function names and calls (fallback)",
+          "scope": [
+            "entity.name.function",
+            "support.function",
+            "meta.function-call",
+            "meta.method-call"
+          ],
+          "settings": { "foreground": "#ea9a97" }
+        },
+        {
+          "name": "Variables (fallback)",
+          "scope": ["variable", "variable.other.readwrite"],
+          "settings": { "foreground": "#e0def4" }
+        },
+        {
+          "name": "Operators & punctuation (fallback)",
+          "scope": ["keyword.operator", "punctuation", "meta.brace", "meta.delimiter"],
+          "settings": { "foreground": "#6e6a86" }
+        }
+      ]
+    }
+  },
+
+  "editor.bracketPairColorization.enabled": true,
+  "editor.cursorStyle": "line"
+}
