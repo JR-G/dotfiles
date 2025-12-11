@@ -9,3 +9,4 @@ obsidian/Ephemeral
 .vscode/
 .cursorrules
 .vimspector.json
+tmux/.tmux/plugins/
