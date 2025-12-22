@@ -11,12 +11,18 @@
 # Ensure Homebrew paths are available early
 if [ -d "/opt/homebrew/bin" ]; then
   export PATH="/opt/homebrew/bin:$PATH"
+
 elif [ -d "/usr/local/bin" ]; then
   export PATH="/usr/local/bin:$PATH"
 fi
 
+
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+# Set location of dotfiles repo (defaulting to ~/dotfiles)
+export DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -134,7 +140,7 @@ starship-switch() {
     return 1
   fi
 
-  cd ~/dotfiles/starship/.config
+  cd "$DOTFILES/starship/.config"
   cp "starship/presets/$1.toml" starship.toml
   cd - > /dev/null
 }
@@ -193,3 +199,21 @@ fi
 if command -v rbenv &> /dev/null; then
   eval "$(rbenv init -)"
 fi
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# Load machine-specific configuration
+if [ -f "$HOME/.zshrc.local" ]; then
+  source "$HOME/.zshrc.local"
+fi
+
+# Prevent duplicate PATH entries (keep this at the end)
+typeset -U path
