@@ -39,7 +39,6 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "heroku/brew/heroku"
 brew "jesseduffield/lazygit/lazygit"
-
 cask "db-browser-for-sqlite"
 cask "graphql-playground"
 cask "ngrok"
