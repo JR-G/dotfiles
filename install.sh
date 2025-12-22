@@ -53,7 +53,7 @@ if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
 fi
 
 # Array of directories to stow
-dirs=(nvim alacritty tmux git zsh karabiner starship obsidian ghostty)
+dirs=(nvim tmux git zsh starship obsidian ghostty)
 
 # Loop through directories and stow them
 for dir in "${dirs[@]}"
