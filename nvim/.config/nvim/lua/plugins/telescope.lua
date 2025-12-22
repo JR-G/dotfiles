@@ -10,6 +10,15 @@
       local actions = require('telescope.actions')
       telescope.setup{
         defaults = {
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+          },
           layout_strategy = 'horizontal',
           layout_config = {
             width = 0.95,
@@ -21,6 +30,11 @@
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
             },
+          },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
           },
         },
         extensions = {

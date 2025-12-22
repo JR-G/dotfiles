@@ -99,7 +99,7 @@ return {
     -- Setup mason and mason-lspconfig
     require('mason').setup()
     require('mason-lspconfig').setup({
-      ensure_installed = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer', 'ruby_lsp', 'basedpyright' },
+      ensure_installed = { 'ts_ls', 'eslint', 'html', 'cssls', 'tailwindcss', 'lua_ls', 'emmet_ls', 'svelte', 'elixirls', 'rust_analyzer', 'basedpyright' },
     })
 
     -- Configure diagnostic signs
