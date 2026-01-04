@@ -1,64 +1,84 @@
 #!/bin/bash
+set -euo pipefail
 
-# Homebrew
-if ! command -v brew &> /dev/null
-then
+echo "🚀 Starting Mac bootstrap..."
+
+# -------------------------------
+# 1️⃣ Homebrew
+# -------------------------------
+if ! command -v brew &> /dev/null; then
     echo "Homebrew is not installed. Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-    echo "Homebrew is already installed."
 fi
 
-# Stow
-if ! command -v stow &> /dev/null
-then
+# Make Homebrew immediately available in this shell
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# -------------------------------
+# 2️⃣ Stow
+# -------------------------------
+if ! command -v stow &> /dev/null; then
     echo "Stow is not installed. Installing Stow..."
     brew install stow
-else
-    echo "Stow is already installed."
 fi
 
-# Install packages from Brewfile
+# -------------------------------
+# 3️⃣ Install packages from Brewfile
+# -------------------------------
 echo "Installing packages from Brewfile..."
-brew bundle
+brew bundle --verbose --no-lock
 
-# asdf
+# -------------------------------
+# 4️⃣ Backup existing .zshrc safely
+# -------------------------------
+if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+    timestamp=$(date +%Y%m%d%H%M%S)
+    echo "Backing up existing .zshrc to .zshrc.backup.$timestamp"
+    mv "$HOME/.zshrc" "$HOME/.zshrc.backup.$timestamp"
+fi
+
+# -------------------------------
+# 5️⃣ asdf
+# -------------------------------
 if [ ! -d "$HOME/.asdf" ]; then
     echo "asdf is not installed. Installing asdf..."
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
-else
-    echo "asdf is already installed."
 fi
 
-# oh-my-zsh
+export ASDF_DIR="$HOME/.asdf"
+[ -f "$ASDF_DIR/asdf.sh" ] && . "$ASDF_DIR/asdf.sh"
+
+# -------------------------------
+# 6️⃣ Deno (non-interactive)
+# -------------------------------
+if ! command -v deno &> /dev/null; then
+    echo "Deno is not installed. Installing Deno..."
+    curl -fsSL https://deno.land/install.sh | sh -s -- --no-modify-path --no-completions
+fi
+
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# -------------------------------
+# 7️⃣ oh-my-zsh (non-interactive)
+# -------------------------------
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "oh-my-zsh is not installed. Installing oh-my-zsh..."
+    export RUNZSH=no
+    export CHSH=no
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-else
-    echo "oh-my-zsh is already installed."
 fi
 
-# deno
-if ! command -v deno &> /dev/null; then
-    echo "deno is not installed. Installing deno..."
-    curl -fsSL https://deno.land/install.sh | sh
-else
-    echo "deno is already installed."
-fi
-
-# Backup existing .zshrc if it exists and is not a symlink (created by oh-my-zsh installer)
-if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
-    echo "Backing up existing .zshrc to .zshrc.backup"
-    mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
-fi
-
-# Array of directories to stow
+# -------------------------------
+# 8️⃣ Stow dotfiles
+# -------------------------------
 dirs=(nvim tmux git zsh starship obsidian ghostty)
-
-# Loop through directories and stow them
-for dir in "${dirs[@]}"
-do
-    stow -v -R -t ~ $dir
+for dir in "${dirs[@]}"; do
+    stow -v -R -t ~ --ignore='\.git' "$dir"
 done
 
+# -------------------------------
+# 9️⃣ Finished
+# -------------------------------
 echo "🚀 Dotfiles installation complete!"
+echo "Open a new terminal or run 'exec zsh -l' to start using your new shell environment."
