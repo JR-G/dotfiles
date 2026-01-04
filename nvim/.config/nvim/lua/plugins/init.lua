@@ -1,9 +1,10 @@
+
 -- lua/plugins/init.lua
 return {
   -- Color schemes
   {
     'uloco/bluloco.nvim',
-    dependencies = { 'rktjmp/lush.nvim'}
+    dependencies = { 'rktjmp/lush.nvim' }
   },
   {
     "sainnhe/sonokai",
@@ -22,9 +23,7 @@ return {
       require('rose-pine').setup({
         variant = "moon",
         dark_variant = "moon",
-        styles = {
-          transparency = true
-        }
+        styles = { transparency = true }
       })
       vim.cmd("colorscheme rose-pine")
     end
@@ -49,7 +48,7 @@ return {
   { 'tpope/vim-endwise' },
   { 'tpope/vim-eunuch' },
   { 'tpope/vim-fugitive' },
-  { 'tpope/vim-projectionist'},
+  { 'tpope/vim-projectionist' },
 
   -- Modern surround plugin
   { 'kylechui/nvim-surround', config = true },
@@ -61,8 +60,12 @@ return {
   { 'andymass/vim-matchup' },
   { 'junegunn/vim-easy-align' },
 
-  -- Enhance Treesitter
-  { 'nvim-treesitter/nvim-treesitter-textobjects' },
+  -- Treesitter textobjects (main treesitter config is in treesitter.lua)
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    lazy = true,
+  },
 
   -- Formatter
   {
@@ -84,24 +87,17 @@ return {
   -- Hover definitions
   {
     'nvimdev/lspsaga.nvim',
-    config = function()
-      require('lspsaga').setup({
-        lightbulb = {
-          enable = false,
-        }
-      })
-    end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
     },
+    config = function()
+      require('lspsaga').setup({ lightbulb = { enable = false } })
+    end
   },
 
   -- Improve input
-  {
-    'stevearc/dressing.nvim',
-    opts = {},
-  },
+  { 'stevearc/dressing.nvim', opts = {} },
 
   -- Svelte
   { 'evanleck/vim-svelte' },
@@ -110,21 +106,18 @@ return {
   -- Argument highlighting
   {
     'm-demare/hlargs.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       require('hlargs').setup()
     end
   },
 
+  -- Debugging
   { 'mfussenegger/nvim-dap' },
 
   -- Noice for UI stuff
-
-	{
-		"rcarriga/nvim-notify",
-		opts = {
-			timeout = 5000,
-			background_colour = "#000000",
-			render = "wrapped-compact",
-		},
-	},
+  {
+    "rcarriga/nvim-notify",
+    opts = { timeout = 5000, background_colour = "#000000", render = "wrapped-compact" },
+  },
 }

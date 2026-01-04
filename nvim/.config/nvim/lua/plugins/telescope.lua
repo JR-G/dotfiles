@@ -1,9 +1,9 @@
   return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
+    tag = 'v0.2.1',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     config = function()
       local telescope = require('telescope')
@@ -18,6 +18,7 @@
             "--line-number",
             "--column",
             "--smart-case",
+            "--hidden",
           },
           layout_strategy = 'horizontal',
           layout_config = {
