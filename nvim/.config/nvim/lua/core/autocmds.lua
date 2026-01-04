@@ -23,6 +23,9 @@ autocmd('BufEnter', {
   command = 'set fo-=c fo-=r fo-=o'
 })
 
+-- Fix rust macro highlighting
+vim.api.nvim_set_hl(0, "@lsp.type.macro.rust", { link = "Macro" })
+
 -- Settings for filetypes:
 -- Disable line length marker
 augroup('setLineLength', { clear = true })
