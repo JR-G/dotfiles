@@ -18,6 +18,8 @@
 [user]
 	name = James Glenn
 	email = 47917431+JR-G@users.noreply.github.com
+[include]
+  path = ~/.gitconfig-work
 [core]
   excludesfile = /Users/james.glenn/dotfiles/git/.gitignore
 [init]
