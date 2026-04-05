@@ -25,8 +25,12 @@ fi
 # -------------------------------
 # 3️⃣ Install packages from Brewfile
 # -------------------------------
-echo "Installing packages from Brewfile..."
-brew bundle --verbose --no-lock
+if brew bundle check &> /dev/null; then
+    echo "All Brewfile dependencies already installed. Skipping."
+else
+    echo "Installing packages from Brewfile..."
+    brew bundle --verbose
+fi
 
 # -------------------------------
 # 4️⃣ Backup existing .zshrc safely
@@ -53,7 +57,7 @@ export ASDF_DIR="$HOME/.asdf"
 # -------------------------------
 if ! command -v deno &> /dev/null; then
     echo "Deno is not installed. Installing Deno..."
-    curl -fsSL https://deno.land/install.sh | sh -s -- --no-modify-path --no-completions
+    curl -fsSL https://deno.land/install.sh | sh -s -- --no-modify-path
 fi
 
 export DENO_INSTALL="$HOME/.deno"
@@ -74,8 +78,9 @@ fi
 # -------------------------------
 dirs=(nvim tmux git zsh starship obsidian ghostty)
 for dir in "${dirs[@]}"; do
-    stow -v -R -t ~ --ignore='\.git' "$dir"
+    stow -v -R -t ~ --adopt --ignore='\.git' "$dir"
 done
+git checkout .
 
 # -------------------------------
 # 9️⃣ Finished
